@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button class="snap">Play</button>
+    <video autoplay class="player"></video>
+    <script>
+      const video = document.querySelector(".player");
+      const snap = document.querySelector('.snap');
+
+      async function playVideo() {
+        try {
+          let stream = await navigator.mediaDevices.getUserMedia({
+            audio: false,
+            video: true
+          });
+          video.srcObject = stream;
+          video.onloadmetadata = function(video) {
+            video.play();
+          };
+          console.dir(video);
+          //video.play()
+        } catch (err) {
+          console.error(err.message, "Webcam");
+        }
+      }
+
+      snap.addEventListener('click', playVideo)
+      
+    </script>
+  </body>
+</html>

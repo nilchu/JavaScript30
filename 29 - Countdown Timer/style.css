@@ -1,0 +1,121 @@
+html {
+  box-sizing: border-box;
+  font-size: 10px;
+  background: #8E24AA;
+  background: linear-gradient(45deg,  #42a5f5 0%,#478ed1 50%,#0d47a1 100%);
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+  cursor: none;
+}
+
+body {
+  margin: 0;
+  text-align: center;
+  font-family: 'Inconsolata', monospace;
+  /*
+  cursor: url('https://vectr.com/tmp/c1UCrloRf/c4XXjkWhM.svg?width=128&height=128&select=c4XXjkWhMpage0&source=page'), auto
+  */
+}
+
+.cursor, .cursor::before {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.cursor {
+  z-index: 1;
+  width: 25px;
+  height: 25px;
+  border: 4px solid rgba(0,0,0,0.2);
+  animation-name: cursor;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  transition: transform 0.25s;
+}
+
+.cursor::before {
+  content: '';
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  background: rgba(0,100,100,0.8);
+}
+
+@keyframes cursor {
+  0% { border-color: rgba(200,0,0,0.8)}
+  25% { border-color: rgba(0,100,100,0.8)}
+  50% { border-color: rgba(0,200,200,1)}
+  75% { border-color: rgba( 0,100, 100, 0.8)}
+  100% { border-color: rgba(200,0,0,0.8)}
+}
+
+.display__time-left {
+  font-weight: 100;
+  font-size: 20rem;
+  margin: 0;
+  color: white;
+  text-shadow: 4px 4px 0 rgba(0,0,0,0.05);
+}
+
+.timer {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.timer__controls {
+  display: flex;
+}
+
+.timer__controls > * {
+  flex: 1;
+}
+
+.timer__controls form {
+  flex: 1;
+  display: flex;
+}
+
+.timer__controls input {
+  flex: 1;
+  border: 0;
+  padding: 2rem;
+}
+
+.timer__button {
+  background: none;
+  border: 0;
+  cursor: none;
+  color: white;
+  font-size: 2rem;
+  text-transform: uppercase;
+  background: rgba(0,0,0,0.1);
+  border-bottom: 3px solid rgba(0,0,0,0.2);
+  border-right: 1px solid rgba(0,0,0,0.2);
+  padding: 1rem;
+  font-family: 'Inconsolata', monospace;
+}
+
+.timer__button:hover,
+.timer__button:focus {
+  background: rgba(0,0,0,0.2);
+  outline: 0;
+}
+
+.display {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.display__end-time {
+  font-size: 4rem;
+  color: white;
+}

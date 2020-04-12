@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Console Tricks!</title>
+  </head>
+  <body>
+    <p onClick="makeGreen()">×BREAK×DOWN×</p>
+
+    <script>
+      const dogs = [{ name: "Snickers", age: 2 }, { name: "hugo", age: 8 }];
+
+      function makeGreen() {
+        const p = document.querySelector("p");
+        p.style.color = "#BADA55";
+        p.style.fontSize = "50px";
+      }
+
+      // Regular
+      console.log("Regular");
+      // Interpolated
+      console.log("I am %s", "interpolated");
+      // Styled
+      console.log("%cI am styled", "color: rgba(230, 230, 3, 0.75)");
+      // warning!
+      console.warn("Ups");
+      // Error :|
+      console.error("ERROR why");
+      // Info
+      console.info("Might be helpful in the future");
+      // Testing
+      console.assert(2 === 1, "That is wrong");
+      // clearing
+      //console.clear()
+      // Viewing DOM Elements
+      console.log(document.querySelector("p"));
+      console.dir(document.querySelector("p"));
+      // Grouping together
+      dogs.forEach(dog => {
+        console.group(`${dog.name}`); // Alternatively use console.groupCollapsed closed dropdown
+        console.log(`Hi, this is ${dog.name}`);
+        console.log(`${dog.age} is quite some age`);
+        console.groupEnd(`${dog.name}`);
+      });
+      // counting
+      console.count("Hi");
+      console.count("Hi");
+      console.count("Bye");
+      console.count("Hi");
+      console.count("Bye");
+      console.count("Good Night");
+      // timing
+      console.time("Fetch data");
+      fetch("https://jsonplaceholder.typicode.com/todos/5")
+        .then(response => response.json())
+        .then(data => console.timeEnd("Fetch data"));
+      // table
+      console.table(dogs);
+    </script>
+  </body>
+</html>

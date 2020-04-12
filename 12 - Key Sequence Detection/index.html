@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Key Detection</title>
+  <script type="text/javascript" src="http://www.cornify.com/js/cornify.js"></script>
+</head>
+<body>
+<script>
+  /* Missing
+  - modularization
+  - key delay
+  - callback function
+  ...
+  */
+
+  const sequenceDetection = (function(window, sequence) {
+    const secretCode = sequence
+    let pressed = []
+    let currentKeyIndex = 0
+    window.addEventListener('keydown', (e) => {
+    pressed.push(e.key)
+    pressed.splice(0, pressed.length - secretCode.length)
+    if(pressed.join('') === secretCode) cornify_add()
+    })
+  })(window, 'unicorn')
+
+  document.addEventListener('DOMContentLodad', sequenceDetection)
+</script>
+</body>
+</html>
